@@ -10,6 +10,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 @SpringBootTest
 class DemomsbApplicationTests {
     @Autowired
@@ -17,6 +24,10 @@ class DemomsbApplicationTests {
 
     @Autowired
     ServiceC sc;
+
+
+    @Resource
+    DataSource dataSource;
 
     @Test
     void contextLoads() {
@@ -30,15 +41,17 @@ class DemomsbApplicationTests {
 
     @Test
     public void transTest(){
-//        sa.funA();
-        System.out.println(JDBCTemplateSingletonProvider.getInstance());
-        System.out.println(JDBCTemplateSingletonProvider.getInstance().getJdbcTemplate());
+        sa.funA();
+//        System.out.println(JDBCTemplateSingletonProvider.getInstance().getDataSource());
+//        System.out.println(JDBCTemplateSingletonProvider.getInstance());
+//        System.out.println(JDBCTemplateSingletonProvider.getInstance().getJdbcTemplate());
 
     }
 
     @Test
-    public void Test(){
-        sc.fun();
+    public void Test() throws SQLException {
+        sc.fun1();
+
     }
 
 }

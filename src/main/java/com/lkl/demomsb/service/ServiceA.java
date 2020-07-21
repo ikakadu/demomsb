@@ -34,7 +34,7 @@ public class ServiceA {
         String sql = " select  *  from student ";
         List<Student> list = new ArrayList<>();
 //        int i = jdbcTemplate.update(sql);
-        list = JDBCTemplateSingletonProvider.getInstance().getJdbcTemplate().query(sql, args.toArray(), new RowMapper<Student>() {
+        list = jdbcTemplate.query(sql, args.toArray(), new RowMapper<Student>() {
             @Override
             public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Student s = new Student();

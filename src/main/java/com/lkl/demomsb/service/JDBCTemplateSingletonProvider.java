@@ -1,14 +1,6 @@
 package com.lkl.demomsb.service;
 
 
-import cn.hutool.core.lang.Singleton;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.sql.DataSource;
-
 public class JDBCTemplateSingletonProvider {
 
     private  ProviderJDBCTemplate providerJDBCTemplate;

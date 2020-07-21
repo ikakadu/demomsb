@@ -1,3 +1,4 @@
+/*
 package com.lkl.demomsb.service;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,3 +20,4 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().build();
     }
 }
+*/

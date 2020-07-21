@@ -1,20 +1,26 @@
 package com.lkl.demomsb.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+@Service
 public class ProviderJDBCTemplate {
     @Resource
     DataSource dataSource;
 
-    @Autowired
-    DataSource primaryDataSource;
+
+
+    public DataSource getDataSource(){
+        return dataSource;
+    }
+
 
     public JdbcTemplate getJdbcTemplate(){
-        return new JdbcTemplate(primaryDataSource);
+        System.out.println("dataSource:"+dataSource);
+        return new JdbcTemplate(dataSource);
     }
+
 }

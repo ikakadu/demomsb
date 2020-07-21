@@ -11,10 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +34,7 @@ public class ServiceA {
         String sql = " select  *  from student ";
         List<Student> list = new ArrayList<>();
 //        int i = jdbcTemplate.update(sql);
-        list = ProviderJDBCTemplate.getInstance().query(sql, args.toArray(), new RowMapper<Student>() {
+        list = JDBCTemplateSingletonProvider.getInstance().getJdbcTemplate().query(sql, args.toArray(), new RowMapper<Student>() {
             @Override
             public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Student s = new Student();

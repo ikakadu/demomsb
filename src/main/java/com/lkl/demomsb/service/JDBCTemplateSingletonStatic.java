@@ -2,11 +2,7 @@ package com.lkl.demomsb.service;
 
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import javax.annotation.Resource;
-import javax.sql.DataSource;
 
 public class JDBCTemplateSingletonStatic {
 

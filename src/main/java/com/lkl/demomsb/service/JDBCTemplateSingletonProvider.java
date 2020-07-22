@@ -1,9 +1,13 @@
+/*
 package com.lkl.demomsb.service;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class JDBCTemplateSingletonProvider {
 
-    private  ProviderJDBCTemplate providerJDBCTemplate;
+    @Autowired
+    private static   ProviderJDBCTemplate providerJDBCTemplate;
 
 
     private JDBCTemplateSingletonProvider(){
@@ -15,10 +19,10 @@ public class JDBCTemplateSingletonProvider {
     }
 
     public static final ProviderJDBCTemplate getInstance() {
-
         return JdbcTemplateInstance.INSTANCE.providerJDBCTemplate;
     }
 
 }
 
 
+*/

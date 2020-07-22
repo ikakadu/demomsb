@@ -1,8 +1,8 @@
 package com.lkl.demomsb.service;
 
-import com.alibaba.fastjson.JSON;
 import com.lkl.demomsb.dto.Student;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +20,9 @@ public class ServiceC {
     @Resource
     private DataSource dataSource;
 
+//    @Resource(name = "primaryDataSource")
+//    private  DataSource dataSource;
+
 
     public void fun() throws SQLException {
         Connection connection = dataSource.getConnection();
@@ -35,11 +38,18 @@ public class ServiceC {
     }
 
     public void  fun1(){
-        log.info("dataSource:{}",dataSource);
         List<Object> args = new ArrayList<Object>();
         String sql = " select  *  from student ";
         List<Student> list = new ArrayList<>();
-        list = JDBCTemplateSingletonProvider.getInstance().getJdbcTemplate().query(sql, args.toArray(), new RowMapper<Student>() {
+
+        JdbcTemplate instance1 = JDBCTemplateSingletonStatic.getInstance();
+        JdbcTemplate instance2 = JDBCTemplateSingletonStatic.getInstance();
+
+        System.out.println(instance1.hashCode());
+        System.out.println(instance2.hashCode());
+
+
+        list = JDBCTemplateSingletonStatic.getInstance().query(sql, args.toArray(), new RowMapper<Student>() {
             @Override
             public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Student s = new Student();

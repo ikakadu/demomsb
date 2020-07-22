@@ -57,7 +57,7 @@ public class FileController {
         return "下载成功";
     }
 
-    @GetMapping("/query/stu")
+    /*@GetMapping("/query/stu")
     public String  queryStudent(){
         List<Object> args = new ArrayList<Object>();
         String sql = " select  *  from student ";
@@ -72,7 +72,7 @@ public class FileController {
             }
         });
         return JSON.toJSONString(list);
-    }
+    }*/
 
 
 }

@@ -77,21 +77,6 @@ public class ServiceC {
         log.info("fun2执行了，结果:{}",list);
     }
 
-    public void  fun3(){
-        List<Object> args = new ArrayList<Object>();
-        String sql = " select  *  from student ";
-        List<Student> list = new ArrayList<>();
 
-        list = JDBCTemplateSingletonHungry.getInstance().query(sql, args.toArray(), new RowMapper<Student>() {
-            @Override
-            public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
-                Student s = new Student();
-                s.setId(rs.getInt("id"));
-                s.setName(rs.getString("name"));
-                return s;
-            }
-        });
-        log.info("fun3执行了，结果:{}",list);
-    }
 
 }

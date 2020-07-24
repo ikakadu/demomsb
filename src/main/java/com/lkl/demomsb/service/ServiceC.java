@@ -44,8 +44,8 @@ public class ServiceC {
         JdbcTemplate instance1 = JDBCTemplateSingletonStatic.getInstance();
         JdbcTemplate instance2 = JDBCTemplateSingletonStatic.getInstance();
 
-        System.out.println(instance1.hashCode());
-        System.out.println(instance2.hashCode());
+        log.info(instance1.toString());
+        log.info(instance2.toString());
 
 
         list = JDBCTemplateSingletonStatic.getInstance().query(sql, args.toArray(), new RowMapper<Student>() {

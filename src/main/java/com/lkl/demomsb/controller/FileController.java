@@ -1,6 +1,10 @@
 package com.lkl.demomsb.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.lkl.demomsb.dto.Student;
+import com.lkl.demomsb.service.JDBCTemplateSingletonStatic;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -49,12 +57,12 @@ public class FileController {
         return "下载成功";
     }
 
-    /*@GetMapping("/query/stu")
+    @GetMapping("/query/stu")
     public String  queryStudent(){
         List<Object> args = new ArrayList<Object>();
         String sql = " select  *  from student ";
         List<Student> list = new ArrayList<>();
-        list = JDBCTemplateSingletonProvider.getInstance().getJdbcTemplate().query(sql, args.toArray(), new RowMapper<Student>() {
+        list = JDBCTemplateSingletonStatic.getInstance().query(sql, args.toArray(), new RowMapper<Student>() {
             @Override
             public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Student s = new Student();
@@ -64,7 +72,7 @@ public class FileController {
             }
         });
         return JSON.toJSONString(list);
-    }*/
+    }
 
 
 }

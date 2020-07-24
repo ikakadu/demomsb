@@ -2,6 +2,7 @@ package com.lkl.demomsb.service;
 
 import com.lkl.demomsb.dto.Student;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -20,9 +21,6 @@ public class ServiceC {
     @Resource
     private DataSource dataSource;
 
-//    @Resource(name = "primaryDataSource")
-//    private  DataSource dataSource;
-
 
     public void fun() throws SQLException {
         Connection connection = dataSource.getConnection();
@@ -36,6 +34,7 @@ public class ServiceC {
         }
 
     }
+
 
     public void  fun1(){
         List<Object> args = new ArrayList<Object>();
@@ -59,6 +58,40 @@ public class ServiceC {
             }
         });
         log.info("fun1执行了，结果:{}",list);
+    }
+
+    public void  fun2(){
+        List<Object> args = new ArrayList<Object>();
+        String sql = " select  *  from student ";
+        List<Student> list = new ArrayList<>();
+
+        list = JDBCTemplateSingletonDoubleCheck.getInstance().query(sql, args.toArray(), new RowMapper<Student>() {
+            @Override
+            public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Student s = new Student();
+                s.setId(rs.getInt("id"));
+                s.setName(rs.getString("name"));
+                return s;
+            }
+        });
+        log.info("fun2执行了，结果:{}",list);
+    }
+
+    public void  fun3(){
+        List<Object> args = new ArrayList<Object>();
+        String sql = " select  *  from student ";
+        List<Student> list = new ArrayList<>();
+
+        list = JDBCTemplateSingletonHungry.getInstance().query(sql, args.toArray(), new RowMapper<Student>() {
+            @Override
+            public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Student s = new Student();
+                s.setId(rs.getInt("id"));
+                s.setName(rs.getString("name"));
+                return s;
+            }
+        });
+        log.info("fun3执行了，结果:{}",list);
     }
 
 }

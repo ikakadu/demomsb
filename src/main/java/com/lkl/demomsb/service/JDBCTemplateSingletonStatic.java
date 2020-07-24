@@ -2,21 +2,28 @@ package com.lkl.demomsb.service;
 
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+@Component
 public class JDBCTemplateSingletonStatic {
 
-    private static DruidDataSource dataSource = new DruidDataSource();
+    @Resource
+    DataSource ds;
 
-    static {
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8");
-        dataSource.setUsername("root");
-        dataSource.setPassword("123456");
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+    private static DataSource dataSource;
+
+    @PostConstruct
+    public void setDataSource(){
+        JDBCTemplateSingletonStatic.dataSource = ds;
     }
 
-    private JDBCTemplateSingletonStatic(){
-    }
+
+    private JDBCTemplateSingletonStatic(){}
 
     private static class JdbcTemplateInstance {
         private static final JdbcTemplate INSTANCE = new JdbcTemplate(dataSource);

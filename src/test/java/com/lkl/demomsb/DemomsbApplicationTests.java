@@ -3,6 +3,7 @@ package com.lkl.demomsb;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lkl.demomsb.dto.Student;
+import com.lkl.demomsb.service.ReadPropertiesService;
 import com.lkl.demomsb.service.ServiceA;
 import com.lkl.demomsb.service.ServiceC;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,9 @@ import javax.sql.DataSource;
 class DemomsbApplicationTests {
     @Autowired
     ServiceA sa;
+
+//    @Autowired
+//    ReadPropertiesService rs;
 
     @Autowired
     ServiceC sc;
@@ -38,6 +42,13 @@ class DemomsbApplicationTests {
     @Test
     public void transTest(){
         sa.funA();
+
+    }
+    @Test
+    public void readTest(){
+
+        String url = ReadPropertiesService.getUrl();
+        System.out.println(url);
 
     }
 

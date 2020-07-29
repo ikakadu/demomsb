@@ -6,6 +6,7 @@ import com.lkl.demomsb.dto.Student;
 import com.lkl.demomsb.service.ReadPropertiesService;
 import com.lkl.demomsb.service.ServiceA;
 import com.lkl.demomsb.service.ServiceC;
+import com.lkl.demomsb.service.ServiceD;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +21,8 @@ class DemomsbApplicationTests {
     @Autowired
     ServiceA sa;
 
+    @Autowired
+    ServiceD d;
 
 //    @Autowired
 //    ReadPropertiesService rs;
@@ -56,7 +59,8 @@ class DemomsbApplicationTests {
 
     @Test
     public void getJdbc() {
-        sc.fun1();
+        Map<String, Student> map = d.getMap();
+        System.out.println(map);
 //        System.out.println("--------------------------------");
 //        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
 //        System.out.println(beanDefinitionNames);

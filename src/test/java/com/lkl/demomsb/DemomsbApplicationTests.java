@@ -13,11 +13,13 @@ import org.springframework.context.ApplicationContext;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.util.Map;
 
 @SpringBootTest
 class DemomsbApplicationTests {
     @Autowired
     ServiceA sa;
+
 
 //    @Autowired
 //    ReadPropertiesService rs;

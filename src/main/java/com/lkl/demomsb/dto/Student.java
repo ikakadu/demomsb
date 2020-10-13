@@ -1,6 +1,7 @@
 package com.lkl.demomsb.dto;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @DATE: 2020/3/31
  **/
 //@Data
+@Component
 public class Student {
     Integer id;
     String name;

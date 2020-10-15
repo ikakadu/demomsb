@@ -2,12 +2,32 @@ package com.lkl.demomsb;
 
 
 import com.lkl.demomsb.dto.Student;
+import com.lkl.demomsb.dto.StudentA;
 import org.apache.commons.collections4.list.TreeList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
+@SpringBootTest
 public class Test {
+
+    @Autowired
+    ApplicationContext applicationContext;
+
+    @org.junit.jupiter.api.Test
+    public void beanGetTest(){
+        String name = applicationContext.getBean("stu1").getClass().getName();
+        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+        String[] students = applicationContext.getBeanNamesForType(Student.class);//根据类来获取它在IOC容器里的名字
+
+        System.out.println(name);
+    }
+
+
+
 
     @org.junit.jupiter.api.Test
     public void timeTest(){

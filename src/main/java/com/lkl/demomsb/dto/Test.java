@@ -5,8 +5,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test {
     public static void main(String[] args) {
-
-        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+        //测试spring循环依赖
+        ApplicationContext context = new ClassPathXmlApplicationContext("application1.xml");
 
         System.out.println(context.getBean("a", StudentA.class));
 

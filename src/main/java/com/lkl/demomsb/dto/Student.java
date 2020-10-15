@@ -11,7 +11,7 @@ import java.util.Date;
  * @DATE: 2020/3/31
  **/
 //@Data
-@Component
+//@Component
 public class Student {
     Integer id;
     String name;

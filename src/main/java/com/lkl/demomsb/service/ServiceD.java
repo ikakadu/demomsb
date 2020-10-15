@@ -19,7 +19,7 @@ public class ServiceD {
         return new Student(1, "a");
     }
 
-    @Bean("stu2")
+/*    @Bean("stu2")
 //    @Qualifier("valid")
     Student user2() {
         return new Student(2, "b");
@@ -30,5 +30,5 @@ public class ServiceD {
 
     public Map<String, Student> getMap() {
         return this.map;
-    }
+    }*/
 }

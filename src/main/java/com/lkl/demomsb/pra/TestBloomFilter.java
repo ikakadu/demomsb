@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class TestBloomFilter {
 
-    static int sizeOfNumberSet = Integer.MAX_VALUE >> 20;
+    static int sizeOfNumberSet = Integer.MAX_VALUE >> 15;
 
     static Random generator = new Random();
 

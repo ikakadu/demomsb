@@ -25,6 +25,7 @@ public class HeapOOM{
         allocation3=new byte[2*_1MB];
         allocation4=new byte[4*_1MB];//出现一次Minor GC
 
+
     }
 
 }
